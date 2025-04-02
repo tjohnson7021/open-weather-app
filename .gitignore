@@ -1,0 +1,40 @@
+# Node modules
+/node_modules/
+
+# Compiled output
+/dist/
+/build/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.iml
+
+# Other
+coverage/          # Coverage reports from testing
+*.tgz              # Archive files
+*.zip              # Zipped files
+
+# Ignore package-lock.json or yarn.lock if you want to lock out dependencies (not recommended)
+# package-lock.json
+# yarn.lock
+
+# Ignore other temporary files if necessary
+*.tmp
+/backend/node_modules
+/backend/dist
