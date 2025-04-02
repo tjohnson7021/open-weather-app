@@ -12,6 +12,12 @@ app.use(express.json());
 
 app.use(cors());
 
+/* LOGGER */
+app.use('/', express.static(__dirname + '/'), function (req, res, next) {
+    console.log(req.method + ' ' + req.originalUrl)
+    next()
+})
+
 // Define routes
 app.get('/', (req, res) => {
     res.send('Weather API is running... <br> you can go to: <br> /status <br> /weather/[enter zipcode]');
