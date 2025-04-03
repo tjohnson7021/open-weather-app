@@ -1,9 +1,9 @@
 {
-  "name": "frontend",
+  "name": "open-weather-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "homepage": "",
+  "homepage": "https://tjohnson7021.github.io/open-weather-app/",
   "scripts": {
     "dev": "vite",
     "deploy": "gh-pages -d dist",
