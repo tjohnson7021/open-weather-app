@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import WeatherCard from "./WeatherCard";
 
+
+const localBackendUrl = "http://localhost:3000";
+// const prodBackendUrl = "https://open-weather-app-dev.onrender.com";
+
 const WeatherForecast = () => {
     const [weather, setWeather] = useState<any>(null);
     const [zip, setZip] = useState("");
@@ -9,7 +13,7 @@ const WeatherForecast = () => {
     const fetchWeather = async () => {
         try {
             const response = await axios.get(
-                `https://open-weather-app-dev.onrender.com/weather/${zip}`
+                `${localBackendUrl}/weather/${zip}`
             );
             setWeather(response.data.list);
         } catch (error) {
