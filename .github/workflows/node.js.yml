@@ -1,0 +1,52 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them,
+# build the source code (including TypeScript), and run tests across different versions of Node.js.
+
+name: Node.js CI
+
+on:
+  push:
+    branches: ["prod", "dev"]
+  pull_request:
+    branches: ["prod"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend/
+
+    strategy:
+      matrix:
+        node-version: [23.x]
+        # List of Node.js versions to test
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Install TypeScript globally (optional)
+        run: npm install -g typescript
+      
+      - name: Build the TypeScript project
+        run: npm run build
+        
+      # - name: Run tests
+      #   run: npm test
+
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+          env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
