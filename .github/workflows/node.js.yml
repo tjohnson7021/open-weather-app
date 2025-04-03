@@ -1,0 +1,41 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them,
+# build the source code (including TypeScript), and run tests across different versions of Node.js.
+
+name: Node.js CI
+
+on:
+  push:
+    branches: ["prod"]
+  pull_request:
+    branches: ["prod"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [23.x]
+        # List of Node.js versions to test
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Install TypeScript globally (optional)
+        run: npm install -g typescript
+      
+      - name: Build the TypeScript project
+        run: npm run build
+        
+      # - name: Run tests
+      #   run: npm test
