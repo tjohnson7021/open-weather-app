@@ -11,7 +11,7 @@ type WeatherProps = {
 const WeatherCard = ({ day }: WeatherProps) => (
     <div>
         <h3>{day.dt_txt}</h3>
-        <p>Temp: {day.main.temp}°C</p>
+        <p>Temp: {day.main.temp}°F</p>
     </div>
 );
 

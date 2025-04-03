@@ -27,7 +27,7 @@ app.get("/weather/:zipcode", async (req, res) => {
         const { zipcode } = req.params;
         const API_KEY = process.env.OPENWEATHER_API_KEY;
         const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&units=metric&appid=${API_KEY}`
+            `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&units=imperial&appid=${API_KEY}`
         );
         res.json(response.data);
     } catch (error) {
