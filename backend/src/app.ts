@@ -16,7 +16,7 @@ app.use(cors());
 app.use('/', express.static(__dirname + '/'), function (req, res, next) {
     console.log(req.method + ' ' + req.originalUrl)
     next()
-})
+});
 
 // Define routes
 app.get('/', (req, res) => {
@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/status', (req, res) => {
+    console.log(req.method + ' ' + req.originalUrl + ' ' + 'Operational!')
     res.send('Operational!');
 });
 
