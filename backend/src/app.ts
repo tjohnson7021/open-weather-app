@@ -29,10 +29,12 @@ app.get("/weather/:zipcode", async (req, res) => {
         const response = await axios.get(
             `https://api.openweathermap.org/data/2.5/forecast?zip=${zipcode}&units=imperial&appid=${API_KEY}`
         );
+        console.log(req.method + ' ' + req.originalUrl + '  ' + '*** Weather data received! ***')
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch weather data" });
     }
+
 });
 
 

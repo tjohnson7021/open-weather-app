@@ -13,7 +13,7 @@ const WeatherForecast = () => {
     const fetchWeather = async () => {
         try {
             const response = await axios.get(
-                `https://open-weather-app-dev.onrender.com/weather/${zip}`
+                `http://localhost:3000/weather/${zip}`
             );
             setWeather(response.data.list);
         } catch (error) {
