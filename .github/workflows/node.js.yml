@@ -40,7 +40,10 @@ jobs:
       
       - name: Build the TypeScript project
         run: npm run build
-        
+
+      - name: Check build directory
+        run: ls -la build
+
       # - name: Run tests
       #   run: npm test
 
