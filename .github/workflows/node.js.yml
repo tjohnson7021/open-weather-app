@@ -44,7 +44,7 @@ jobs:
         run: npm run build
 
       - name: Check build directory
-        run: ls -la build
+        run: ls -la dist
 
       # - name: Run tests
       #   run: npm test
@@ -52,6 +52,6 @@ jobs:
       - name: Deploy with gh-pages
         run: |
             git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-            npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+            npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Ensure this line points to the correct token
